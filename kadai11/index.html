@@ -3,49 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>条件分岐クイズ</title>
+<title>Switch構文で処理を分岐</title>
 <style>
-   body {
-     font-family: Arial, sans-serif;
-     text-align: center;
-     margin-top: 50px;
-   }
-   button {
-     padding: 10px 20px;
-     font-size: 16px;
-     cursor: pointer;
-     margin: 10px;
-   }
-   #message {
-     margin-top: 20px;
-     font-size: 18px;
-     color: #333;
-   }
+       body {
+           font-family: Arial, sans-serif;
+           text-align: center;
+           margin-top: 50px;
+       }
+       button {
+           padding: 10px 20px;
+           font-size: 16px;
+           cursor: pointer;
+       }
+       .message {
+           margin-top: 20px;
+           font-size: 18px;
+           color: #333;
+       }
 </style>
 </head>
 <body>
-<h1>問題</h1>
-<p>最も面積が大きい「県」は何県でしょう？</p>
-<button id="hintButton">ヒントを見る</button>
-<button id="answerButton">答えを見る</button>
-<div id="message">ボタンを押してください。</div>
+<h1>Switch構文で処理を分岐</h1>
+<button id="clickButton">クリックしてください</button>
+<div class="message" id="message">ここにメッセージが表示されます。</div>
 <script>
-   let hintClickCount = 0;
-   document.getElementById("hintButton").addEventListener("click", () => {
-     hintClickCount++;
-     const message = document.getElementById("message");
-     if (hintClickCount === 1) {
-       message.textContent = "（注意）北海道は「県」ではありません。";
-     } else if (hintClickCount === 2) {
-       message.textContent = "東北地方にあります。";
-     } else {
-       message.textContent = "これ以上ヒントはありません！";
-     }
-   });
-   document.getElementById("answerButton").addEventListener("click", () => {
-     const message = document.getElementById("message");
-     message.textContent = "答えは「岩手県」です。";
-   });
+       // クリック回数を記録する変数
+       let clickCount = 0;
+       // ボタンとメッセージ領域を取得
+       const button = document.getElementById("clickButton");
+       const message = document.getElementById("message");
+       // ボタンクリック時の処理
+       button.addEventListener("click", () => {
+           clickCount++;
+           // クリック回数に応じてswitch構文で処理を分岐
+           switch (clickCount) {
+               case 1:
+                   message.textContent = "1回目のクリックです！";
+                   break;
+               case 2:
+                   message.textContent = "2回目のクリックです！";
+                   break;
+               case 3:
+                   message.textContent = "3回目のクリックです！";
+                   break;
+               default:
+                   message.textContent = `クリック回数: ${clickCount}回 - これ以上は特別な処理がありません！`;
+                   break;
+           }
+       });
 </script>
 </body>
 </html>
+has context menu
