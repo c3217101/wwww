@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三次方程式の解を見つける</title>
+<script>
+       function show() {
+           // 解を保存する配列とカウント変数を初期化
+           let anser = [];
+           let count = 0;
+           // 三次方程式: x^3 - 6x^2 + 11x - 6 = 0
+           for (let x = 1; ; x++) {
+               // 三次方程式の値を計算
+               let value = Math.pow(x, 3) - 6 * Math.pow(x, 2) + 11 * x - 6;
+               // 解を判定 (valueが0なら解)
+               if (value === 0) {
+                   anser.push(x); // 解を配列に保存
+                   count++; // 解を見つけた数を増加
+                   // 3つの解を見つけたらループを終了
+                   if (count === 3) {
+                       break;
+                   }
+               }
+           }
+           // 結果を表示
+           document.getElementById("output").innerText = "見つかった解: " + anser.join(", ");
+       }
+</script>
+</head>
+<body>
+<h1>三次方程式の解を見つける</h1>
+<p>三次方程式: x³ - 6x² + 11x - 6 = 0 の解を見つけます。</p>
+<button onclick="show()">解を求める</button>
+<p id="output"></p>
+</body>
+</html>
+
+
