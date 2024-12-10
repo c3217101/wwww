@@ -1,9 +1,9 @@
-!<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smallest Multiple Calculator</title>
+<title>最小公倍数計算</title>
 <style>
        body {
            font-family: Arial, sans-serif;
@@ -23,12 +23,14 @@
 </style>
 </head>
 <body>
-<h1>Smallest Number Divisible by 1 to 10</h1>
-<button onclick="calculateSmallestMultiple()">Calculate</button>
+<h1>1〜10で割り切れる最小の数字を計算</h1>
+<!-- 初期表示 -->
+<button onclick="calculateSmallestMultiple()">計算する</button>
+<!-- 結果表示 -->
 <div id="result"></div>
 <script>
+       // ユークリッドの互除法で最大公約数を計算
        function gcd(a, b) {
-           // Calculate the greatest common divisor using the Euclidean algorithm
            while (b !== 0) {
                let temp = b;
                b = a % b;
@@ -36,17 +38,19 @@
            }
            return a;
        }
+       // 最小公倍数を計算
        function lcm(a, b) {
-           // Calculate the least common multiple
            return (a * b) / gcd(a, b);
        }
+       // 1〜10で割り切れる最小の数を計算する関数
        function calculateSmallestMultiple() {
            let result = 1;
            for (let i = 1; i <= 10; i++) {
                result = lcm(result, i);
            }
+           // 結果を表示
            document.getElementById('result').innerText =
-               `The smallest number divisible by 1 to 10 is: ${result}`;
+               `1〜10で割り切れる最小の数字は: ${result}`;
        }
 </script>
 </body>
