@@ -1,0 +1,54 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smallest Multiple Calculator</title>
+<style>
+       body {
+           font-family: Arial, sans-serif;
+           text-align: center;
+           margin: 50px;
+       }
+       button {
+           padding: 10px 20px;
+           font-size: 16px;
+           cursor: pointer;
+       }
+       #result {
+           margin-top: 20px;
+           font-size: 20px;
+           color: green;
+       }
+</style>
+</head>
+<body>
+<h1>Smallest Number Divisible by 1 to 10</h1>
+<button onclick="calculateSmallestMultiple()">Calculate</button>
+<div id="result"></div>
+<script>
+       function gcd(a, b) {
+           // Calculate the greatest common divisor using the Euclidean algorithm
+           while (b !== 0) {
+               let temp = b;
+               b = a % b;
+               a = temp;
+           }
+           return a;
+       }
+       function lcm(a, b) {
+           // Calculate the least common multiple
+           return (a * b) / gcd(a, b);
+       }
+       function calculateSmallestMultiple() {
+           let result = 1;
+           for (let i = 1; i <= 10; i++) {
+               result = lcm(result, i);
+           }
+           document.getElementById('result').innerText =
+               `The smallest number divisible by 1 to 10 is: ${result}`;
+       }
+</script>
+</body>
+</html>
+
